@@ -58,8 +58,8 @@ export class AuthController {
 
 		res.cookie('refreshToken', refreshToken, {
 			httpOnly: true,
-			secure: false,
-			sameSite: 'lax',
+			secure: true,
+			sameSite: 'none',
 			path: '/',
 			maxAge: this.COOKIE_MAX_AGE
 		});
@@ -78,8 +78,8 @@ export class AuthController {
 		const { accessToken, refreshToken, id } = await this.authService.login(userId, ipAddress, userAgent);
 		res.cookie('refreshToken', refreshToken, {
 			httpOnly: true,
-			secure: false,
-			sameSite: 'lax',
+			secure: true,
+			sameSite: 'none',
 			path: '/',
 			maxAge: this.COOKIE_MAX_AGE
 		});
@@ -96,8 +96,8 @@ export class AuthController {
 
 		res.cookie('refreshToken', refreshToken, {
 			httpOnly: true,
-			secure: false,
-			sameSite: 'lax',
+			secure: true,
+			sameSite: 'none',
 			path: '/',
 			maxAge: this.COOKIE_MAX_AGE
 		});
@@ -115,8 +115,8 @@ export class AuthController {
 			await this.authService.logOut(userId, ipAddress, userAgent);
 			res.clearCookie('refreshToken', {
 				httpOnly: true,
-				secure: false,
-				sameSite: 'lax',
+				secure: true,
+				sameSite: 'none',
 				path: '/'
 
 			});
@@ -175,8 +175,8 @@ export class AuthController {
 
 			res.cookie('refreshToken', refreshToken, {
 				httpOnly: true,
-				secure: false,
-				sameSite: 'lax',
+				secure: true,
+				sameSite: 'none',
 				path: '/',
 				maxAge: this.COOKIE_MAX_AGE
 			});
