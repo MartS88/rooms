@@ -3,26 +3,23 @@
 ## Installation
 
 ```bash
-npm install
+bun install
 ```
 
 ## Database Setup
 ```bash
-npx sequelize-cli db:migrate
+bun migrate
 ```
 
 ```bash
-npx sequelize-cli db:seed:all
+bun seed-all
 ```
 
 ## Running the app
 
 ```bash
 # production
-npm run start
-
-# watch mode
-npm run start:dev
+bun run dev
 ```
 
 ## Test
