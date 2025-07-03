@@ -1,9 +1,12 @@
-# Combat server
+# BOOKING server for SAGIROV.com  
+
+## Installation
 
 ```bash
 npm install
 ```
 
+## Database Setup
 ```bash
 npx sequelize-cli db:migrate
 ```
@@ -34,3 +37,7 @@ npm run test:e2e
 # test coverage
 npm run test:cov
 ```
+
+
+## Docker Support (Optional)
+docker compose up --build
