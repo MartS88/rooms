@@ -1,8 +1,9 @@
-version: '3.8'
+version: '3.9'
 
 services:
   db:
     image: mysql:8.0
+    container_name: db
     environment:
       MYSQL_USER: myuser
       MYSQL_PASSWORD: mypass
@@ -12,27 +13,25 @@ services:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
-
-  redis:
-    image: redis:7
-    restart: always
-    ports:
-      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-prootpass"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   app:
+    container_name: app
     build: .
     volumes:
-      - ./logs:/app/logs
+      - ./logs:/usr/src/app/logs
     depends_on:
-      - db
-      - redis
+      db:
+        condition: service_healthy
     env_file:
-      - ./.production.env
-    environment:
-      - PATH=/root/.bun/bin:$PATH
+      - ./.development.env
     ports:
-      - "5000:5000"
-    command: sh -c "bun migrate && bun seed-all && bun run start"
+      - "7000:7000"
+    command: sh -c "bun run migrate && bun run seed-all && bun run dev"
 
 volumes:
   db_data:
