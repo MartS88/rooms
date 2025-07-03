@@ -37,4 +37,6 @@ npm run test:cov
 
 
 ## Docker Support (Optional)
+```bash
 docker compose up --build
+```
