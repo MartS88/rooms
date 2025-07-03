@@ -21,13 +21,16 @@ export class GoogleStrategy extends PassportStrategy(Strategy) {
     private googleConfiguration: ConfigType<typeof googleOauthConfig>,
     private authService: AuthService,
   ) {
-    super({
+      super({
       clientID: googleConfiguration.clientID,
       clientSecret: googleConfiguration.clientSecret,
-      callbackURL: googleConfiguration.callbackURL,
+      callbackURL: 'https://decryptor.cloud/api/v1/auth/google/callback', //googleConfiguration.callbackURL,
       scope: ['email', 'profile'],
       passReqToCallback: true,
     });
+console.log('1 GOOGLE CLIENT ID used:', googleConfiguration.clientID);
+console.log('2 GOOGLE CALLBACK URL used:', googleConfiguration.callbackURL);
+console.log('3 Google CALLBACK URL:', googleConfiguration.callbackURL);
   }
 
 
