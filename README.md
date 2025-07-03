@@ -38,5 +38,5 @@ npm run test:cov
 
 ## Docker Support (Optional)
 ```bash
-docker compose up --build
+docker-compose up --build --no-cache
 ```
